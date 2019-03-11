@@ -3,6 +3,7 @@ body,
 #root,
 .container {
   height:100%;
+  background-color: #cf6a87;
 }
 
 body {
@@ -15,21 +16,51 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.paging {
+  display: inline-block;
+}
+
+.top-most {
+  
+  z-index: 10000;
+}
+
+.font-normal {
+  font-size: 1.5em;
+}
+
 .todo{
   height: 100%;
 }
 
 .list-group-item {
   animation: slide-up 0.3s ease-in;
+  transition: opacity 0.2s ;
 }
 
 .list-group-item-checked{
-  background-color: rgb(209, 252, 209) !important;
-  transition: background-color 0.5s;
+  opacity: 0.5;
 }
 
 .list-title{
   animation: slide-up 0.4s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+ .list-item-nav {
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color 0.5s;
+} 
+
+.list-item-nav:hover .list-item-nav-btn {
+  opacity: 1;
+}
+
+.list-item-nav-btn {
+  transition:  opacity 0.5s;
+  opacity: 0.3;
 }
 
 @keyframes slide-up {
@@ -38,9 +69,10 @@ body {
     transform: translateX(-30px);
   }
   100% {
-    opacity:1;
+    opacity:100%;
     transform: translateX(0);
   }
+
   /* 0% {
       opacity: 0;
       transform: translateX(-20px);

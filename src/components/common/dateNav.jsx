@@ -1,41 +1,55 @@
 import React from 'react';
 import _ from 'lodash';
-import Joi from 'joi-browser';
 
-const DateNav = ({ date, onUpdate }) => {
+const DateNav = ({ date, onChange, onPrev, onNext, className }) => {
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const dateOfTheMonth = date.getDate();
   const maxDate = getDateOfTheMonth(year, month);
 
+  const handleDateChange = ({ currentTarget }) => {
+    console.log("handleUpdateDate called!");
+    const { name, value } = currentTarget;
+    const dateObj = { year, month, dateOfTheMonth };
+    dateObj[name] = value;
+    onChange(new Date(dateObj.year, dateObj.month - 1, dateObj.dateOfTheMonth));
+  }
+
   return (
-    <div className="input-group">
-      <select value={year} className="custom-select col-sm-1" id="inputGroupSelect04" aria-label="Example select with button addon">
+    <div className={"input-group mb-3 ml-auto"}>
+      <button onClick={onPrev} className='btn btn-light ml-auto mr-2'>
+        <i className="fas fa-caret-left fa-large px"></i>
+      </button>
+      <button onClick={onNext} className='btn btn-light mr-2'>
+        <i className="fas fa-caret-right fa-large px"></i>
+      </button>
+      <button onClick={()=>onChange(new Date())} className='btn btn-light mr-2'>Today</button>
+      <select value={year} name='year' onChange={handleDateChange} className="custom-select col" id="inputGroupSelect04" aria-label="Example select with button addon">
         {
           _.range(year - 40, year + 40)
-            .map((anYear) => <option value={anYear}>{anYear}</option>)
+            .map((anYear) => <option value={anYear} key={anYear}>{anYear}</option>)
         }
       </select>
-      <div class="input-group-append">
-        <span class="input-group-text" id="inputGroup-sizing-sm">년</span>
+      <div className="input-group-append">
+        <span className="input-group-text" id="inputGroup-sizing-sm">년</span>
       </div>
-      <select value={month} className="custom-select col-sm-1" id="inputGroupSelect04" aria-label="Example select with button addon">
+      <select value={month} name='month' onChange={handleDateChange} className="custom-select col" id="inputGroupSelect04" aria-label="Example select with button addon">
         {
           _.range(1, 12)
-            .map((aMonth) => <option value={aMonth}>{aMonth}</option>)
+            .map((aMonth) => <option value={aMonth} key={aMonth}>{aMonth}</option>)
         }
       </select>
-      <div class="input-group-append">
-        <span class="input-group-text" id="inputGroup-sizing-sm">월</span>
+      <div className="input-group-append">
+        <span className="input-group-text" id="inputGroup-sizing-sm">월</span>
       </div>
-      <select value={dateOfTheMonth} className="custom-select col-sm-1" id="inputGroupSelect04" aria-label="Example select with button addon">
+      <select value={dateOfTheMonth} name='dateOfTheMonth' onChange={handleDateChange} className="custom-select col" id="inputGroupSelect04" aria-label="Example select with button addon">
         {
-          _.range(1,maxDate)
-            .map((dateOfTheMonth) => <option value={dateOfTheMonth}>{dateOfTheMonth}</option>)
+          _.range(1, maxDate)
+            .map((dateOfTheMonth) => <option value={dateOfTheMonth} key={dateOfTheMonth}>{dateOfTheMonth}</option>)
         }
       </select>
-      <div class="input-group-append">
-        <span class="input-group-text" id="inputGroup-sizing-sm">일</span>
+      <div className="input-group-append">
+        <span className="input-group-text" id="inputGroup-sizing-sm">일</span>
       </div>
     </div>
   );

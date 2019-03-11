@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import Header from './components/common/header';
 import Todo from './components/todo';
 
-import DateNav from './components/common/dateNav';
-
-
 import './App.css';
-
 import 'bootstrap/dist/css/bootstrap.css';
+import '@fortawesome/fontawesome-free/css/all.css';
 
 
 class App extends Component {
@@ -15,7 +12,6 @@ class App extends Component {
     return (
       <React.Fragment>
       <Header/>
-      {/* d-flex flex-wrap align-content-center justify-content-center */}
         <div className="container">
           <Todo/>
         </div>

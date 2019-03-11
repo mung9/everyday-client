@@ -3,14 +3,14 @@ import React from 'react';
 const PagingButton = ({ onPageLeft, onPageRight }) => {
   return (
     <div className="paging">
-      <a onClick={onPageLeft} className="carousel-control-prev" href="#myCarousel" role="button" data-slide="next">
-        <button className="btn btn-secondary">{'<<'}</button>
+      {/* <div className="paging-control-prev"> */}
+        <button onClick={onPageLeft} className="btn badge badge-pill"><i className="fas fa-caret-left fa-6x"></i></button>
         <span className="sr-only">Next</span>
-      </a>
-      <a onClick={onPageRight} className="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-        <button className="btn btn-secondary">{'>>'}</button>
+      {/* </div> */}
+      {/* <div className="paging-control-next"> */}
+        <button onClick={onPageRight} className="badge badge-pill btn"><i className="fas fa-caret-right fa-6x"></i></button>
         <span className="sr-only">Prev</span>
-      </a>
+      {/* </div> */}
     </div>
   );
 }
