@@ -3,7 +3,7 @@ body,
 #root,
 .container {
   height:100%;
-  background-color: #cf6a87;
+  background-color: #EAB543;
 }
 
 body {
@@ -14,6 +14,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.header-title{
+  left:-50%;
+  transform: translateX(-50%);
 }
 
 .paging {
@@ -54,13 +59,18 @@ body {
   transition: background-color 0.5s;
 } 
 
-.list-item-nav:hover .list-item-nav-btn {
-  opacity: 1;
+.list-item-nav > * {
+  margin-right: 5px;
 }
+
 
 .list-item-nav-btn {
   transition:  opacity 0.5s;
   opacity: 0.3;
+}
+
+.list-item-nav-btn:hover {
+  opacity: 1;
 }
 
 @keyframes slide-up {

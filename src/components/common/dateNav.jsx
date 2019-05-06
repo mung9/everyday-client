@@ -63,7 +63,6 @@ function isLeapYear(year) {
 
 const dayOfTheMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 function getDateOfTheMonth(year, month) {
-  console.log(year, month);
   if (month !== 2) return dayOfTheMonth[month - 1];
   return (isLeapYear(year) ? 29 : 28);
 }
